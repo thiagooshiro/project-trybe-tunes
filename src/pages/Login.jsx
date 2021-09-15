@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Header extends React.Component {
+class Login extends React.Component {
   render() {
     return (
       <div data-testid="page-login">
@@ -10,4 +10,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default Login;

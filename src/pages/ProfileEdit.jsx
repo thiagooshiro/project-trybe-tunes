@@ -2,7 +2,11 @@ import React from 'react';
 
 class ProfileEdit extends React.Component {
   render() {
-    return (<h2>Pagina pra editar o perfil</h2>);
+    return (
+      <div data-testid="page-profile-edit">
+        <h2>Pagina pra editar o perfil</h2>
+      </div>  
+    );
   }
 }
 
