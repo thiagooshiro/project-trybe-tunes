@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AlbumCard from './AlbumCard';
 
 class AlbumList extends React.Component {
@@ -19,5 +20,14 @@ class AlbumList extends React.Component {
     );
   }
 }
+
+AlbumList.propTypes = {
+  albumList: PropTypes.arrayOf(PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    artist: PropTypes.string.isRequired,
+    album: PropTypes.string.isRequired,
+    albumId: PropTypes.number.isRequired,
+  })).isRequired,
+};
 
 export default AlbumList;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 class AlbumCard extends React.Component {
@@ -19,5 +20,12 @@ class AlbumCard extends React.Component {
     );
   }
 }
+
+AlbumCard.propTypes = {
+  image: PropTypes.string.isRequired,
+  artist: PropTypes.string.isRequired,
+  album: PropTypes.string.isRequired,
+  albumId: PropTypes.number.isRequired,
+};
 
 export default AlbumCard;
