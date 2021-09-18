@@ -34,7 +34,6 @@ class Search extends React.Component {
       loading: true,
     });
     const answer = await searchAlbumsAPI(artist);
-    console.log(artist);
     this.setState({
       loading: false,
       objSearch: answer,
@@ -48,7 +47,7 @@ class Search extends React.Component {
       <div>
         <h2>{`Resultado de álbuns de: ${!preview ? '' : preview}`}</h2>
         { objSearch.length === 0 ? 'Nenhum álbum foi encontrado'
-          : <AlbumList albumList={ objSearch } /> }
+          : <AlbumList { ...this.props } albumList={ objSearch } /> }
       </div>
     );
   }
