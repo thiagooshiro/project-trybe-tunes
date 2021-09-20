@@ -49,6 +49,8 @@ class Album extends React.Component {
             key={ valor.trackId }
             musicName={ valor.trackName }
             previewUrl={ valor.previewUrl }
+            trackId={ valor.trackId }
+            albumObj={ objAns }
           />
         );
       }));
