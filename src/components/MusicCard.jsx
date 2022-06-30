@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addSong, removeSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class MusicCard extends React.Component {
   constructor(props) {
@@ -12,12 +12,17 @@ class MusicCard extends React.Component {
       loading: false,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.verifyFavorites = this.verifyFavorites.bind(this);
+  }
+
+  componentDidMount() {
+    this.verifyFavorites();
   }
 
   async handleChange({ target }) {
     const { type } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
-    const { albumObj } = this.state; // será que preciso de uma chave dinamica pra cada checkbox?
+    const { albumObj } = this.state;
     this.setState({
       checkbox: value,
       loading: true,
@@ -29,6 +34,17 @@ class MusicCard extends React.Component {
     this.setState({
       loading: false,
     });
+  }
+
+  async verifyFavorites() {
+    const { musicName } = this.props;
+    const answer = await getFavoriteSongs();
+    const favorito = answer.find((favorite) => favorite.trackName === musicName);
+    if (favorito) {
+      this.setState({
+        checkbox: true,
+      });
+    }
   }
 
   renderInput() {
@@ -49,7 +65,7 @@ class MusicCard extends React.Component {
     const { musicName, previewUrl, trackId } = this.props;
     return (
       <div>
-        <h4>{ musicName }</h4>
+        <h4>{musicName}</h4>
         <label data-testid={ `checkbox-music-${trackId}` } htmlFor={ trackId }>
           Favorita
           {this.renderInput()}

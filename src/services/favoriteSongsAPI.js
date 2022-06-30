@@ -1,3 +1,5 @@
+//  arquivo fornecido pela Trybe
+
 const FAVORITE_SONGS_KEY = 'favorite_songs';
 const TIMEOUT = 500;
 const SUCCESS_STATUS = 'OK';
